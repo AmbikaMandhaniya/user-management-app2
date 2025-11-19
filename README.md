@@ -51,8 +51,8 @@ project-folder/
 
 1️⃣ Clone the repository  
 ```bash
-git clone https://github.com/YOUR_USERNAME/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/AmbikaMandhaniya/user-management-app2.git
+cd user-management-app2
 ````
 
 2️⃣ Install dependencies
