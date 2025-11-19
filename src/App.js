@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import HomeView from './components/HomeView';
+import UserDetailView from './components/UserDetailView';
 import './App.css';
 
+/**
+ * Main App Component with Router Logic
+ * Manages routing between Home and User Detail views
+ */
 function App() {
+  const [currentView, setCurrentView] = useState('home'); // 'home' or 'detail'
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  // Navigate to user detail view
+  const navigateToDetail = (userId) => {
+    setSelectedUserId(userId);
+    setCurrentView('detail');
+  };
+
+  // Navigate back to home view
+  const navigateToHome = () => {
+    setCurrentView('home');
+    setSelectedUserId(null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      {currentView === 'home' ? (
+        <HomeView navigateToDetail={navigateToDetail} />
+      ) : (
+        <UserDetailView userId={selectedUserId} navigateToHome={navigateToHome} />
+      )}
     </div>
   );
 }
